@@ -1,8 +1,10 @@
 module Test_Bench;
 reg Clock,Reset,Start,Classify,Filled,Drained,Detergent_Added,Washing_Timeout,Store_Timeout;
-wire Fill_valve_second_on,Fill_valve_on,Drained_valve_on,Door_Lock,Done;
+wire Fill_valve_second_on,Fill_valve_on,Drained_valve_on,Door_Lock,Done,out;
 Automatic_Dish_Washing_Machine
 ADWM(Clock,Reset,Start,Classify,Filled,Drained,Detergent_Added,Washing_Timeout,Store_Timeout,Fill_valve_second_on,Fill_valve_on,Drained_valve_on,Door_Lock,Done);
+connect
+CN(Fill_valve_second_on,Fill_valve_on, Drained_valve_on, Door_Lock, Done, out);
 initial
 begin
 $monitor("Time=%d,Clock=%b,Reset=%b,Start=%b,Door_Close=%b,Filled=%b,Drained=%b,Detergent_Added=%b,Washing_Timeout=%b,Store_Timeout=%b,Fill_valve_second_on=%b,Fill_valve_on=%b,Drained_valve_on=%b,Door_Lock=%b,Done=%b",$time,Clock,Reset,Start,Classify,Filled,Drained,Detergent_Added,Washing_Timeout,Store_Timeout,Fill_valve_second_on,Fill_valve_on,Drained_valve_on,Door_Lock,Done);
